@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Filmes } from './Models/Filmes';
 import { JsonService } from './Service/JSONService';
+import { faEye, faFileAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,9 @@ import { JsonService } from './Service/JSONService';
 })
 export class AppComponent {
   filmes: Filmes[];
+  filmeSelecionado: Filmes;
+  faEye = faEye;
+  faFileAlt = faFileAlt;
 
   constructor(
     private jsonService: JsonService,
@@ -24,5 +28,9 @@ export class AppComponent {
         this.filmes = element;
       }
     );
+  }
+
+  selecionarFilme(indexSelecionado: number){
+    this.filmeSelecionado  = this.filmes[indexSelecionado];
   }
 }

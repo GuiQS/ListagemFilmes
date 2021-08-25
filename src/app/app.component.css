@@ -1,0 +1,29 @@
+.icons {
+    color: inherit;
+    font-size: 23pt;
+}
+
+thead{
+    font-size: 12pt;
+}
+
+tbody{
+    font-size: 11pt;
+}
+
+#poster:hover {
+    color: rgb(87, 87, 87);
+}
+
+#descricaoIcon {
+    display: none;
+}
+
+@media screen and (max-width: 992px) {
+    #descricao {
+        display: none;
+    }
+    #descricaoIcon {
+        display: block;
+    }
+}

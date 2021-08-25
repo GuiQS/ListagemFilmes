@@ -1,49 +1,72 @@
-<div class="m-5">
+<div class="m-3">
   <h5>Listagem de Filmes pelo JSON</h5>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>
-          Nome
-        </th>
-        <th>
-          Ano
-        </th>
-        <th>
-          Diretor
-        </th>
-        <th>
-          Genero
-        </th>
-        <th>
-          Descrição
-        </th>
-        <th>
-          Poster
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let filme of filmes">
-        <td>
-          {{filme.nome}}
-        </td>
-        <td>
-          {{filme.ano}}
-        </td>
-        <td>
-          {{filme.diretor}}
-        </td>
-        <td>
-          {{filme.genero}}
-        </td>
-        <td>
-          {{filme.descricao}}
-        </td>
-        <td>
-          <a href="{{filme.poster}}" target="_blank">Veja</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th>
+            Nome
+          </th>
+          <th>
+            Ano
+          </th>
+          <th>
+            Diretor
+          </th>
+          <th>
+            Genero
+          </th>
+          <th>
+            Descrição
+          </th>
+          <th class="text-center">
+            Poster
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let filme of filmes; let i = index">
+          <td>
+            {{filme.nome}}
+          </td>
+          <td>
+            {{filme.ano}}
+          </td>
+          <td>
+            {{filme.diretor}}
+          </td>
+          <td>
+            {{filme.genero}}
+          </td>
+          <td>
+            <span id="descricao">{{filme.descricao}}</span>
+            <a id="descricaoIcon" class="icons" data-toggle="modal" (click)="selecionarFilme(i)" data-target="#exampleModal">
+              <fa-icon [icon]="faFileAlt"></fa-icon>
+            </a>
+          </td>
+          <td class="text-center">
+            <a href="{{filme.poster}}" class="icons" target="_blank">
+              <fa-icon [icon]="faEye"></fa-icon>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" *ngIf="filmeSelecionado != null">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{filmeSelecionado.nome}}</h5>
+      </div>
+      <div class="modal-body">
+        {{filmeSelecionado.descricao}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
 </div>
