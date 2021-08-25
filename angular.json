@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "ListagemFilmes"
+  "defaultProject": "ListagemFilmes",
+  "cli": {
+    "analytics": false
+  }
 }

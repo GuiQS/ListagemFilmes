@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Filmes } from './Models/Filmes';
+import { JsonService } from './Service/JSONService';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ListagemFilmes';
+  filmes: Filmes[];
+
+  constructor(
+    private jsonService: JsonService,
+  ){}
+
+  ngOnInit(){
+    this.buscarDadosJson();
+  }
+
+  buscarDadosJson(){
+    this.jsonService.getJSON().subscribe(
+      element => {
+        this.filmes = element;
+      }
+    );
+  }
 }
